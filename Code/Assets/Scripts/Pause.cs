@@ -23,6 +23,7 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject botaoRetomar;
     [SerializeField] private GameObject botaoVoltar;
     [SerializeField] private GameObject telaCelular;
+    [SerializeField] private GameObject telaAudio;
 
     private void Start()
     {
@@ -118,30 +119,42 @@ public class Pause : MonoBehaviour
     public void PausarJogo()
     {
 
-        if (estaPausado)
+        if(telaAudio.activeSelf && Input.GetJoystickNames().Length == 0)
         {
-            painelDePausa.SetActive(false);
-            estaPausado = false;
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Button botaoVoltar = GameObject.FindWithTag("voltar").GetComponent<Button>();
 
-            if(telaCelular != null)
+            if (botaoVoltar != null)
             {
-                telaCelular.SetActive(true);
+                botaoVoltar.onClick.Invoke();
             }
         }
         else
         {
-            painelDePausa.SetActive(true);
-            estaPausado = true;
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
-            if(telaCelular != null)
+            if (estaPausado)
             {
-                telaCelular.SetActive(false);
+                painelDePausa.SetActive(false);
+                estaPausado = false;
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                if(telaCelular != null)
+                {
+                    telaCelular.SetActive(true);
+                }
+            }
+            else
+            {
+                painelDePausa.SetActive(true);
+                estaPausado = true;
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
+                if(telaCelular != null)
+                {
+                    telaCelular.SetActive(false);
+                }
             }
         }
         

@@ -24,7 +24,6 @@ public class AtivaDesativaControle : MonoBehaviour
             if (!string.IsNullOrEmpty(joystickNam))
             {
                 algumControleConectado = true;
-                Debug.Log("achou o controle");
                 break;
             }
         }
@@ -47,7 +46,6 @@ public class AtivaDesativaControle : MonoBehaviour
 
             GameObject botaoTela = GameObject.FindWithTag("selecionavel");
             EventSystem.current.SetSelectedGameObject(botaoTela);
-            Debug.Log(botaoTela.name);
             conectouControle = true;
 
         }
@@ -58,7 +56,5 @@ public class AtivaDesativaControle : MonoBehaviour
             ultimoBotaoSelecionado = EventSystem.current.currentSelectedGameObject;
 
         }
-
-        Debug.Log(algumControleConectado);
     }
 }

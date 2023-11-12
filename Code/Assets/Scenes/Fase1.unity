@@ -289,7 +289,8 @@ MonoBehaviour:
   controleDeSave: {fileID: 91101863}
   botaoRetomar: {fileID: 1947556594}
   botaoVoltar: {fileID: 671653240}
-  telaCelular: {fileID: 1370970826}
+  telaCelular: {fileID: 0}
+  telaAudio: {fileID: 1361613301}
 --- !u!114 &91101863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12569,7 +12570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1370970827
 Transform:
   m_ObjectHideFlags: 0
@@ -13521,6 +13522,7 @@ MonoBehaviour:
   textoPorcentagem: {fileID: 716291506}
   origemAudio: {fileID: 1801312616}
   somGrilo: {fileID: 0}
+  telaAudio: {fileID: 1361613301}
 --- !u!4 &1702493050
 Transform:
   m_ObjectHideFlags: 0
