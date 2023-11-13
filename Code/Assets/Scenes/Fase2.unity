@@ -345,6 +345,7 @@ MonoBehaviour:
   botaoRetomar: {fileID: 1965196030}
   botaoVoltar: {fileID: 643966929}
   telaCelular: {fileID: 775132422}
+  telaAudio: {fileID: 958330622}
 --- !u!114 &91101863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7079,6 +7080,7 @@ MonoBehaviour:
   textoPorcentagem: {fileID: 811669520}
   origemAudio: {fileID: 2050059349}
   somGrilo: {fileID: 0}
+  telaAudio: {fileID: 958330622}
 --- !u!4 &768640045
 Transform:
   m_ObjectHideFlags: 0

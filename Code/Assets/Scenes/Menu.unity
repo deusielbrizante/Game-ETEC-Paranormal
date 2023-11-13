@@ -1939,6 +1939,7 @@ MonoBehaviour:
   textoPorcentagem: {fileID: 921813002}
   origemAudio: {fileID: 1729548494}
   somGrilo: {fileID: 1225623983}
+  telaAudio: {fileID: 840785498}
 --- !u!114 &207319069
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,12 +15,18 @@ public class ControladorSom : MonoBehaviour
     private float sensibilidade = 0.001f;
     private bool resetInputs = false;
 
-    private void Awake()
+    private void Start()
     {
 
         if (PlayerPrefs.HasKey("audio"))
         {
             controleVolume.value = PlayerPrefs.GetFloat("audio");
+            origemAudio.volume = controleVolume.value;
+
+            if(somGrilo != null)
+            {
+                somGrilo.volume = controleVolume.value;
+            }
         }
 
     }

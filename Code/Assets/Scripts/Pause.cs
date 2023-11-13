@@ -23,7 +23,6 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject botaoRetomar;
     [SerializeField] private GameObject botaoVoltar;
     [SerializeField] private GameObject telaCelular;
-    [SerializeField] private GameObject telaAudio;
 
     private void Start()
     {
@@ -119,7 +118,11 @@ public class Pause : MonoBehaviour
     public void PausarJogo()
     {
 
-        if(telaAudio.activeSelf && Input.GetJoystickNames().Length == 0)
+        if(painelDeAudio.activeSelf && Input.GetJoystickNames().Length > 0)
+        {
+            return;
+        }
+        else if(painelDeAudio.activeSelf && Input.GetJoystickNames().Length == 0)
         {
             Button botaoVoltar = GameObject.FindWithTag("voltar").GetComponent<Button>();
 

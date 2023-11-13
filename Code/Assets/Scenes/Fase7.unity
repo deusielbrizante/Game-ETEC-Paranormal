@@ -24609,6 +24609,7 @@ MonoBehaviour:
   textoPorcentagem: {fileID: 1373597765}
   origemAudio: {fileID: 1338242007}
   somGrilo: {fileID: 0}
+  telaAudio: {fileID: 984424659}
 --- !u!4 &1836316227
 Transform:
   m_ObjectHideFlags: 0
