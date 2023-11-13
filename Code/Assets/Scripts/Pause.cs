@@ -14,7 +14,6 @@ public class Pause : MonoBehaviour
     private GameObject ultimoBotaoSelecionado;
     private string[] joystickName;
     private bool estaPausado;
-    private int slotSave;
     private bool conectouControle;
     [SerializeField] private GameObject painelDePausa;
     [SerializeField] private GameObject painelDeAudio;
@@ -33,7 +32,6 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        slotSave = PlayerPrefs.GetInt("ultimoSlotSelecionado");
 
         joystickName = Input.GetJoystickNames();
 

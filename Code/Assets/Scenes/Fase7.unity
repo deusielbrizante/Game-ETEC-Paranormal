@@ -253,7 +253,7 @@ MonoBehaviour:
   controleDeSave: {fileID: 91101863}
   botaoRetomar: {fileID: 1947556594}
   botaoVoltar: {fileID: 303459477}
-  telaCelular: {fileID: 891069896}
+  telaCelular: {fileID: 0}
 --- !u!114 &91101863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7041,7 +7041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &891069897
 Transform:
   m_ObjectHideFlags: 0

@@ -419,8 +419,7 @@ MonoBehaviour:
   controleDeSave: {fileID: 91101863}
   botaoRetomar: {fileID: 1947556594}
   botaoVoltar: {fileID: 336314396}
-  telaCelular: {fileID: 424814684}
-  telaAudio: {fileID: 2021356523}
+  telaCelular: {fileID: 0}
 --- !u!114 &91101863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,7 +1167,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 91101862}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: FecharAudio
         m_Mode: 1
@@ -4336,7 +4335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &424814685
 Transform:
   m_ObjectHideFlags: 0
