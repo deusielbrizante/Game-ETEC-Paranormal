@@ -15,7 +15,7 @@ public class SistemaArma : MonoBehaviour
     public float velocidadeDeAtaque;
     private float podeAtacar = 1f;
 
-    private void Update()
+    private void FixedUpdate()
     {
         podeAtacar += Time.fixedDeltaTime;
     }

@@ -18,14 +18,15 @@ public class MenuTroca : MonoBehaviour
     [SerializeField] private GameObject telaTutorialPC;
     [SerializeField] private GameObject telaTutorialControle;
 
-    [Header("Mudan�a de Bot�es")]
+    [Header("Mudança de Botões")]
     [SerializeField] private GameObject iniciar;
     [SerializeField] private GameObject som;
     [SerializeField] private GameObject Saveslot1;
     [SerializeField] private GameObject primeiroPersonagem;
     [SerializeField] private GameObject slot1;
 
-    
+
+    private bool TemControle;
     private bool PersonagemSelecionado;
     private ControleSlotsSave controleSlot;
 
@@ -42,6 +43,18 @@ public class MenuTroca : MonoBehaviour
     
     }
 
+    private void FixedUpdate()
+    {
+        if(Input.GetJoystickNames().Length > 0)
+        {
+            TemControle = true;
+        }
+        else
+        {
+            TemControle = false;
+        }
+    }
+
     public void Jogar()
     {
 
@@ -55,7 +68,11 @@ public class MenuTroca : MonoBehaviour
             DesligarTodasAsTelas();
             telaParaSalvar.SetActive(true);
             controleSlot.MostrarTextoSave();
-            EventSystem.current.SetSelectedGameObject(slot1);
+
+            if (TemControle)
+            {
+                EventSystem.current.SetSelectedGameObject(slot1);
+            }
         }
         else
         {
@@ -70,7 +87,11 @@ public class MenuTroca : MonoBehaviour
         DesligarTodasAsTelas();
         telaParaCarregar.SetActive(true);
         controleSlot.MostrarTextoSave();
-        EventSystem.current.SetSelectedGameObject(Saveslot1);
+
+        if (TemControle)
+        {
+            EventSystem.current.SetSelectedGameObject(Saveslot1);
+        }
 
     }
 
@@ -84,7 +105,11 @@ public class MenuTroca : MonoBehaviour
 
         DesligarTodasAsTelas();
         menuPersonagens.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(primeiroPersonagem);
+
+        if (TemControle)
+        {
+            EventSystem.current.SetSelectedGameObject(primeiroPersonagem);
+        }
 
     }
 
@@ -93,7 +118,11 @@ public class MenuTroca : MonoBehaviour
 
         DesligarTodasAsTelas();
         menuOpcoes.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(som);
+
+        if (TemControle)
+        {
+            EventSystem.current.SetSelectedGameObject(som);
+        }
 
     }
 
@@ -102,7 +131,11 @@ public class MenuTroca : MonoBehaviour
 
         DesligarTodasAsTelas();
         menuInicial.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(iniciar);
+
+        if (TemControle)
+        {
+            EventSystem.current.SetSelectedGameObject(iniciar);
+        }
 
     }
 
