@@ -5907,7 +5907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objTiro: {fileID: 110556877625596367, guid: 07ed073e7ca60174896a5e57d27ab0a3, type: 3}
   tiroSpeed: 15
-  velocidadeDeAtaque: 1
+  velocidadeDeAtaque: 0.2
 --- !u!114 &1847225335
 MonoBehaviour:
   m_ObjectHideFlags: 0

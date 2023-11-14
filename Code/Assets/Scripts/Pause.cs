@@ -192,8 +192,8 @@ public class Pause : MonoBehaviour
 
         painelDePausa.SetActive(true);
         estaPausado = true;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+/*        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;*/
     }
             
     private IEnumerator RetomarJogo()

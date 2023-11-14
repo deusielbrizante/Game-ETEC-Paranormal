@@ -80,8 +80,6 @@ public class Bau : MonoBehaviour
             chaves.chaveBau.enabled = false;
         }
 
-        PlayerPrefs.SetInt("chaveBau", chaves.TemChaveBau);
-        PlayerPrefs.Save();
     }
 
     private IEnumerator JogarChave()

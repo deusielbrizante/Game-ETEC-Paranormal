@@ -12,9 +12,6 @@ public class ChaveBau : MonoBehaviour
 
             outro.gameObject.GetComponent<Personagem>().chaveBau.enabled = true;
             outro.gameObject.GetComponent<Personagem>().TemChaveBau += 1;
-            
-            PlayerPrefs.SetInt("chaveBau", outro.gameObject.GetComponent<Personagem>().TemChaveBau);
-            PlayerPrefs.Save();
 
             Destroy(gameObject);
 

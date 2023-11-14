@@ -142,7 +142,6 @@ public class ControleDeSalvamento : MonoBehaviour
     {
 
         PlayerPrefs.SetInt("valorVerdadeiro", 1);
-        PlayerPrefs.SetInt("carregarSpawns", 1);
         PlayerPrefs.Save();
 
         SaveJogo carregar = Carregar(slot);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SistemaArma : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class SistemaArma : MonoBehaviour
     private void FixedUpdate()
     {
         podeAtacar += Time.fixedDeltaTime;
+
+        int tamanhoSprite = gameObject.name.Length - 7;
+        string nomeSprite = gameObject.name.Remove(tamanhoSprite);
+        GameObject.FindWithTag("testeSprite").GetComponent<Text>().text = nomeSprite;
     }
 
     public void Atacar(InputAction.CallbackContext valor)
@@ -28,7 +33,6 @@ public class SistemaArma : MonoBehaviour
             {
                 DispararTiro();
             }
-
         }
     }
 
@@ -70,7 +74,6 @@ public class SistemaArma : MonoBehaviour
                 //reinicia o tempo de tiro
                 tiroScript.speed = tiroSpeed;
                 tiroScript.imageAngle = transform.eulerAngles.z;
-                Debug.Log(nomeSprite);
 
                 podeAtacar = 0f;
 

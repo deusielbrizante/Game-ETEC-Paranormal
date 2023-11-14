@@ -5886,7 +5886,7 @@ GameObject:
   - component: {fileID: 3733983510697359291}
   - component: {fileID: 4690549588931499024}
   m_Layer: 6
-  m_Name: "menina padr\xE3ozinha"
+  m_Name: "menina padr\xC6ozinha"
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6063,7 +6063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objTiro: {fileID: 110556877625596367, guid: 07ed073e7ca60174896a5e57d27ab0a3, type: 3}
   tiroSpeed: 15
-  velocidadeDeAtaque: 1
+  velocidadeDeAtaque: 0.2
 --- !u!114 &103411338
 MonoBehaviour:
   m_ObjectHideFlags: 0

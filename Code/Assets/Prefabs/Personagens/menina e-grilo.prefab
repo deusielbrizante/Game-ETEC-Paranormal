@@ -6063,7 +6063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objTiro: {fileID: 110556877625596367, guid: 07ed073e7ca60174896a5e57d27ab0a3, type: 3}
   tiroSpeed: 15
-  velocidadeDeAtaque: 1
+  velocidadeDeAtaque: 0.2
 --- !u!114 &1385587414663244396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6302,6 +6302,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2d1b785b-2d7a-4b99-ac84-cb21b84c87fa
     m_ActionName: Jogador/AbrirBauPorta[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5fbc8601-794d-4561-ae00-0603df18d371
+    m_ActionName: Jogador/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f12517e1-ee2f-4d90-b494-ecc931b492e5
+    m_ActionName: Jogador/Voltar
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Jogador

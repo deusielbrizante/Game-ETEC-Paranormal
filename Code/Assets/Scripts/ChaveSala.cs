@@ -12,9 +12,6 @@ public class ChaveSala : MonoBehaviour
 
             outro.gameObject.GetComponent<Personagem>().chavePorta.enabled = true;
             outro.gameObject.GetComponent<Personagem>().TemChavePorta = true;
-
-            PlayerPrefs.SetInt("chaveSala", 1);
-            PlayerPrefs.Save();
             
             Destroy(gameObject);
 

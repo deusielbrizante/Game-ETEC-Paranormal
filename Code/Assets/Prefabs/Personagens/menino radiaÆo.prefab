@@ -5542,7 +5542,7 @@ GameObject:
   - component: {fileID: 5859759459611131271}
   - component: {fileID: 4626926405274203036}
   m_Layer: 6
-  m_Name: "menino radia\xE7\xE3o"
+  m_Name: "menino radia\x87\xC6o"
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5719,7 +5719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objTiro: {fileID: 110556877625596367, guid: 07ed073e7ca60174896a5e57d27ab0a3, type: 3}
   tiroSpeed: 15
-  velocidadeDeAtaque: 1
+  velocidadeDeAtaque: 0.2
 --- !u!114 &491527573
 MonoBehaviour:
   m_ObjectHideFlags: 0
