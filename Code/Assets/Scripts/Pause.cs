@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using System.Data.Common;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.InputSystem.Controls;
 
 public class Pause : MonoBehaviour
 {
@@ -41,6 +43,10 @@ public class Pause : MonoBehaviour
             {
                 if(telaCelular != null)
                 {
+                    telaCelular.SetActive(false);
+                }
+                else
+                {
                     telaCelular.SetActive(true);
                 }
                 break;
@@ -67,11 +73,6 @@ public class Pause : MonoBehaviour
         if (algumControleConectado == false && estaPausado)
         {
             conectouControle = false;
-
-            if(telaCelular != null)
-            {
-                telaCelular.SetActive(false);
-            }
             
             if(ultimoBotaoSelecionado != null)
             {
@@ -87,11 +88,6 @@ public class Pause : MonoBehaviour
 
             EventSystem.current.SetSelectedGameObject(botaoRetomar);
             conectouControle = true;
-        
-            if(telaCelular != null)
-            {
-                telaCelular.SetActive(true);
-            }
 
         }
 
@@ -192,32 +188,21 @@ public class Pause : MonoBehaviour
 
     private IEnumerator Pausar()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.2f);
 
         painelDePausa.SetActive(true);
         estaPausado = true;
-        /*                Cursor.lockState = CursorLockMode.None;
-                        Cursor.visible = true;*/
-
-        if (telaCelular != null)
-        {
-            telaCelular.SetActive(false);
-        }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
             
     private IEnumerator RetomarJogo()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.2f);
 
         painelDePausa.SetActive(false);
         estaPausado = false;
-        /*                Cursor.lockState = CursorLockMode.Locked;
-                        Cursor.visible = false;*/
-
-        if (telaCelular != null)
-        {
-            telaCelular.SetActive(true);
-        }
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

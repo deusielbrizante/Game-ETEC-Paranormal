@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Personagem : MonoBehaviour
 {
 
-    //variáveis para configurar a animação e movimento do personagem
+    //variï¿½veis para configurar a animaï¿½ï¿½o e movimento do personagem
     [SerializeField] private Animator animacao;
     public float velocidadeMovimento;
 
@@ -23,12 +23,12 @@ public class Personagem : MonoBehaviour
     private float ultimaDirecao;
     private Vector3 movimento;
 
-    //variáveis para configurar a detecção de colisão com o chão e as paredes
+    //variï¿½veis para configurar a detecï¿½ï¿½o de colisï¿½o com o chï¿½o e as paredes
     [SerializeField] private LayerMask parede;
 
     [SerializeField] private float distanciaAteParede;
 
-    //referências para as colisões do personagem
+    //referï¿½ncias para as colisï¿½es do personagem
     private BoxCollider2D colisor;
     private RaycastHit2D hit;
     private Vector3 boxSize;
@@ -36,8 +36,11 @@ public class Personagem : MonoBehaviour
     private void Awake()
     {
 
-        //instacia as variáveis ao colisor do jogador
+        //instacia as variï¿½veis ao colisor do jogador
         colisor = GetComponent<BoxCollider2D>();
+
+        TemChaveBau = 0;
+        TemChavePorta = false;
 
     }
 
@@ -79,7 +82,7 @@ public class Personagem : MonoBehaviour
     private void Update()
     {
 
-        //chama todas as funções que forem ser utilizadas a todo frame
+        //chama todas as funï¿½ï¿½es que forem ser utilizadas a todo frame
 
         AtualizaAnimacao(movimento);
 
@@ -103,14 +106,14 @@ public class Personagem : MonoBehaviour
     private void AtualizaAnimacao(Vector3 movimento)
     {
 
-        //pega os valores de x, y e da velocidade e armazena para fazer a animação do jogador
+        //pega os valores de x, y e da velocidade e armazena para fazer a animaï¿½ï¿½o do jogador
         animacao.SetFloat("Horizontal", horizontal);
         animacao.SetFloat("Vertical", vertical);
         animacao.SetFloat("Speed", movimento.magnitude);
 
         AtualizaDirecaoIdle(movimento);
 
-        // Atualize o parâmetro "IdleDirection" no Animator
+        // Atualize o parï¿½metro "IdleDirection" no Animator
         animacao.SetFloat("DirecaoFinalIdle", ultimaDirecao);
 
     }
@@ -118,10 +121,10 @@ public class Personagem : MonoBehaviour
     private void MovimentaPersonagem(Vector3 movimento)
     {
 
-        //faz o cálculo da movimentação da personagem
+        //faz o cï¿½lculo da movimentaï¿½ï¿½o da personagem
         Vector3 novaPosicao = transform.position + movimento * velocidadeMovimento * Time.deltaTime;
 
-        //verifica se a nova posição está colidindo com o chão
+        //verifica se a nova posiï¿½ï¿½o estï¿½ colidindo com o chï¿½o
         if (!ColideComParede(novaPosicao))
         {
 
@@ -131,7 +134,7 @@ public class Personagem : MonoBehaviour
 
     }
 
-    //função verdadeiro ou falso para colisão com a parede
+    //funï¿½ï¿½o verdadeiro ou falso para colisï¿½o com a parede
     private bool ColideComParede(Vector3 posicao)
     {
 
@@ -143,7 +146,7 @@ public class Personagem : MonoBehaviour
 
     private void AtualizaDirecaoIdle(Vector3 movimento)
     {
-        // Atualiza a variável de direção de idle com base na última direção
+        // Atualiza a variï¿½vel de direï¿½ï¿½o de idle com base na ï¿½ltima direï¿½ï¿½o
         if (movimento != Vector3.zero)
         {
             if (Mathf.Abs(movimento.x) > Mathf.Abs(movimento.y))
