@@ -31,24 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "5fbc8601-794d-4561-ae00-0603df18d371",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Voltar",
-                    "type": "Button",
-                    "id": "f12517e1-ee2f-4d90-b494-ecc931b492e5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -216,10 +198,47 @@
                     "action": "AbrirBauPorta",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "df6e8327-e69c-4179-abc8-9b94dcd4e330",
+            "actions": [
+                {
+                    "name": "Voltar",
+                    "type": "Button",
+                    "id": "1ecc6dd2-5ccc-419b-b0e7-d4b68521a8fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "7610db40-6126-4300-a518-191f225f1bb7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0c243f27-74df-49fe-afc6-b42d8a04d6bf",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Voltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "14e24406-1849-4e0b-8022-2d3e787cc659",
+                    "id": "ea53e71f-c189-4c68-a9f7-bbaf71fa58f0",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
@@ -230,23 +249,12 @@
                 },
                 {
                     "name": "",
-                    "id": "ac390f43-53b0-4053-8be2-0bbf589ef425",
+                    "id": "1ebd0220-c093-4269-a514-cf92aa211ebe",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "61251211-591b-46c5-bfdc-27c0c9a1fd15",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Voltar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

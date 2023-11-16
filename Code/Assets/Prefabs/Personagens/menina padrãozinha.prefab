@@ -5886,7 +5886,7 @@ GameObject:
   - component: {fileID: 3733983510697359291}
   - component: {fileID: 4690549588931499024}
   m_Layer: 6
-  m_Name: "menina padr\xC6ozinha"
+  m_Name: "menina padr\xE3ozinha"
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

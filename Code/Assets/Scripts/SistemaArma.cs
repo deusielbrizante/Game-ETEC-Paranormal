@@ -19,10 +19,6 @@ public class SistemaArma : MonoBehaviour
     private void FixedUpdate()
     {
         podeAtacar += Time.fixedDeltaTime;
-
-        int tamanhoSprite = gameObject.name.Length - 7;
-        string nomeSprite = gameObject.name.Remove(tamanhoSprite);
-        GameObject.FindWithTag("testeSprite").GetComponent<Text>().text = nomeSprite;
     }
 
     public void Atacar(InputAction.CallbackContext valor)
