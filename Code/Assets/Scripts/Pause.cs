@@ -45,10 +45,7 @@ public class Pause : MonoBehaviour
                 {
                     telaCelular.SetActive(false);
                 }
-                else
-                {
-                    telaCelular.SetActive(true);
-                }
+
                 break;
             }
         }
@@ -76,9 +73,7 @@ public class Pause : MonoBehaviour
             
             if(ultimoBotaoSelecionado != null)
             {
-                
                 ultimoBotaoSelecionado.GetComponent<Selectable>().OnDeselect(null);
-
             }
 
         }
@@ -111,34 +106,16 @@ public class Pause : MonoBehaviour
 
     public void PausarJogo()
     {
-
-        if(painelDeAudio.activeSelf && Input.GetJoystickNames().Length > 0)
+        if (estaPausado)
         {
-            return;
-        }
-        else if(painelDeAudio.activeSelf && Input.GetJoystickNames().Length == 0)
-        {
-            Button botaoVoltar = GameObject.FindWithTag("voltar").GetComponent<Button>();
-
-            if (botaoVoltar != null)
-            {
-                botaoVoltar.onClick.Invoke();
-            }
+            Time.timeScale = 1;
+            StartCoroutine(RetomarJogo());
         }
         else
         {
-            if (estaPausado)
-            {
-                Time.timeScale = 1;
-                StartCoroutine(RetomarJogo());
-            }
-            else
-            {
-                Time.timeScale = 0;
-                StartCoroutine(Pausar());
-            }
+            Time.timeScale = 0;
+            StartCoroutine(Pausar());
         }
-        
     }
 
     public void Menu()
