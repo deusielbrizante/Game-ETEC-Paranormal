@@ -10,6 +10,7 @@ public class VerificacaoUltimaPorta : MonoBehaviour
 {
 
     [SerializeField] private GameObject telaWin;
+    [SerializeField] private GameObject telaPause;
     [SerializeField] private Tilemap portaFechada;
     [SerializeField] private TileBase portaAberta;
     [SerializeField] private Vector3Int posicaoTile;
@@ -22,21 +23,20 @@ public class VerificacaoUltimaPorta : MonoBehaviour
         {
             if (portaAberta != null)
             {
-
                 portaFechada.SetTile(posicaoTile, portaAberta);
                 telaWin.SetActive(true);
+                telaPause.SetActive(false);
                 Time.timeScale = 0f;
-
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
 
     private void OnTriggerStay2D(Collider2D outro)
     {
-        
         if(outro.gameObject.tag == "Player")
         {
-
             if (outro.gameObject.GetComponent<Personagem>().TemChavePorta == true)
             {
                 podeAbrir = true;
@@ -46,8 +46,6 @@ public class VerificacaoUltimaPorta : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-
         podeAbrir = false;
-
     }
 }

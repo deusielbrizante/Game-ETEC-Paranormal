@@ -32,8 +32,8 @@ public class Pause : MonoBehaviour
         painelDePausa.SetActive(false);
         estaPausado = false;
         Time.timeScale = 1;
-/*        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;*/
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         joystickName = Input.GetJoystickNames();
 
@@ -169,8 +169,8 @@ public class Pause : MonoBehaviour
 
         painelDePausa.SetActive(true);
         estaPausado = true;
-/*        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;*/
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
             
     private IEnumerator RetomarJogo()

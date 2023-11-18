@@ -49,22 +49,29 @@ public class SistemaArma : MonoBehaviour
 
                 int tamanhoSprite = gameObject.name.Length - 7;
                 string nomeSprite = gameObject.name.Remove(tamanhoSprite);
+                Debug.Log(nomeSprite);
+                Debug.Log(spriteRenderer.sprite.name);
+                switch (spriteRenderer.sprite.name)
+                {
+                    case var s when s == nomeSprite + "_8" || s == nomeSprite + "_9" || s == nomeSprite + "_10" || s == nomeSprite + "_11":
+                        tiroScript.direction = 0f;
+                        break;
 
-                if(nomeSprite + "_8" == spriteRenderer.sprite.name || nomeSprite + "_9" == spriteRenderer.sprite.name || nomeSprite + "_10" == spriteRenderer.sprite.name || nomeSprite + "_11" == spriteRenderer.sprite.name)
-                {
-                    tiroScript.direction = 0f;
-                }
-                else if (nomeSprite + "_4" == spriteRenderer.sprite.name || nomeSprite + "_5" == spriteRenderer.sprite.name || nomeSprite + "_6" == spriteRenderer.sprite.name || nomeSprite + "_7" == spriteRenderer.sprite.name)
-                {
-                    tiroScript.direction = 180f;
-                }
-                else if (nomeSprite + "_12" == spriteRenderer.sprite.name || nomeSprite + "_13" == spriteRenderer.sprite.name || nomeSprite + "_14" == spriteRenderer.sprite.name || nomeSprite + "_15" == spriteRenderer.sprite.name)
-                {
-                    tiroScript.direction = 90f;
-                }
-                else if (nomeSprite + "_0" == spriteRenderer.sprite.name || nomeSprite + "_1" == spriteRenderer.sprite.name || nomeSprite + "_2" == spriteRenderer.sprite.name || nomeSprite + "_3" == spriteRenderer.sprite.name)
-                {
-                    tiroScript.direction = -90f;
+                    case var s when s == nomeSprite + "_4" || s == nomeSprite + "_5" || s == nomeSprite + "_6" || s == nomeSprite + "_7":
+                        tiroScript.direction = 180f;
+                        break;
+
+                    case var s when s == nomeSprite + "_12" || s == nomeSprite + "_13" || s == nomeSprite + "_14" || s == nomeSprite + "_15":
+                        tiroScript.direction = 90f;
+                        break;
+
+                    case var s when s == nomeSprite + "_0" || s == nomeSprite + "_1" || s == nomeSprite + "_2" || s == nomeSprite + "_3":
+                        tiroScript.direction = -90f;
+                        break;
+
+                    default:
+                        Debug.Log($"deu ruim");
+                        break;
                 }
 
                 //reinicia o tempo de tiro

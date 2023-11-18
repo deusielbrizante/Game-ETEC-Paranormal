@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Voltar",
+                    "type": "Button",
+                    "id": "39f7003c-a759-4c83-84ac-90a0abc74728",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "3621b611-aa29-4aa8-b491-8dc36563e3dc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -198,6 +216,50 @@
                     "action": "AbrirBauPorta",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69b9a766-ea4f-4e5d-8f20-0a60b3bfeec3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Voltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f32fba8b-7ee8-42f4-814f-2eb7d69a9e96",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Voltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb1dddb1-dc38-4f18-90f1-9381ee76dba7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de9b11d2-2a96-4859-a901-940b40dc5776",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -227,6 +289,17 @@
             "bindings": [
                 {
                     "name": "",
+                    "id": "c6827656-87c9-4754-9c22-a6eacb3a6bfe",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Voltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0c243f27-74df-49fe-afc6-b42d8a04d6bf",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -238,8 +311,8 @@
                 },
                 {
                     "name": "",
-                    "id": "ea53e71f-c189-4c68-a9f7-bbaf71fa58f0",
-                    "path": "<Gamepad>/start",
+                    "id": "1ebd0220-c093-4269-a514-cf92aa211ebe",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -249,8 +322,8 @@
                 },
                 {
                     "name": "",
-                    "id": "1ebd0220-c093-4269-a514-cf92aa211ebe",
-                    "path": "<Keyboard>/escape",
+                    "id": "ea53e71f-c189-4c68-a9f7-bbaf71fa58f0",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
