@@ -10,151 +10,143 @@ using UnityEngine.Scripting;
 
 public class ControleDeSalvamento : MonoBehaviour
 {
-
+    //variáveis do botão e da tela de confirmação
     [SerializeField] private Button botaoIniciar;
     [SerializeField] private GameObject telaDeConfirmacaoSave;
+
+    //variáveis locais
     private GameObject atributosJogador;
     private string caminhoArquivo;
     private bool arquivoExiste;
 
+    //variáveis para o controle caso esteja conectado
     [Header("ControleBotoes")]
     [SerializeField] private GameObject slot1;
     [SerializeField] private GameObject botaoConfirmar;
 
-    //como chamar em outro lugar o save, lembrando de chamar a fun��o e passar o par�metro salvar dentro depois de especificar as altera��es
-    // SaveJogo salvar = new SaveJogo();
+    //como chamar em outro lugar o save, lembrando de chamar a função e passar o parâmetro salvar dentro depois de especificar as alterações
+    //SaveJogo salvar = new SaveJogo();
     
     private void Awake()
     {
-        
+        //verifica se o valor verdadeiro é 1 para poder carregar o salvamento do jogo em alguma parte após ele já ter sido criado
         if(PlayerPrefs.GetInt("valorVerdadeiro") == 1)
         {
             CarregarComecoJogo(PlayerPrefs.GetInt("ultimoSlotSelecionado"));
         }
-
     }
 
     public void SalvarJogo(int slotSelecionado) 
     {
-
+        //define o valor verdadeiro como 0 e salva
         PlayerPrefs.SetInt("valorVerdadeiro", 0);
         PlayerPrefs.Save();
 
         SaveJogo salvar = new SaveJogo();
 
-        //vari�vel para formatar em binario
+        //variável para formatar em binário
         BinaryFormatter formatoBinario = new BinaryFormatter();
 
-        //local onde ser� salvo
+        //local padrão onde é salvo o save
         string localSave = Application.persistentDataPath;
 
+        //novo caminho do arquivo do save
         caminhoArquivo = Path.Combine(localSave + $"/EtecParanormal{slotSelecionado}.save");
 
-        Debug.Log("chegou ate aqui antes da tela de confirmacao");
-        //verifica se o save j� existe
+        //verifica se o save já existe
         if(File.Exists(caminhoArquivo))
         {
-
-            //se existir abre a tela de confirma��o e verifica se quer mesmo sobrepor o save
+            //se existir, verifica se a tela de confirmação não é nulaa, se não for, abre e verifica se o jogador quer mesmo sobrepor o save
             if(telaDeConfirmacaoSave != null)
             {
-
                 telaDeConfirmacaoSave.SetActive(true);
                 EventSystem.current.SetSelectedGameObject(botaoConfirmar);
-
             }
             else
             {
+                //confirma o save automaticamente caso a tela de confirmação seja nula
                 ConfirmaSave();
             }
         }
         else
         {
-
+            //acessa o caminho do arquivo e salva os valores do jogador antes de criptografar as informações
             using(FileStream arquivo = File.Create(caminhoArquivo))
             {
-
                 SalvarPlayerPrefs(salvar);
-
                 formatoBinario.Serialize(arquivo, salvar);
-
             }
 
+            //verifica se o botão de iniciar do menu não é nulo para deixá-lo interativo para poder  iniciar o jogo
             if(botaoIniciar != null)
             {
-
                 botaoIniciar.interactable = true;
-
             }
 
+            //procura o objeto de controle de save e chama a função de atualizar o texto do save
             FindObjectOfType<ControleSlotsSave>().MostrarTextoSave();
-
         }
 
+        //verifica se o botão de iniciar não é nulo para deixá-lo interativo
         if (botaoIniciar != null)
         {
-            
             botaoIniciar.interactable = true;
-        
         }
         
+        //recebe o slot do save selecionado e instancia no save da nuvem
         PlayerPrefs.SetInt("ultimoSlotSelecionado", slotSelecionado);
-
     }
 
     public SaveJogo Carregar(int slotSelecionado)
     {
-
-        Debug.Log("chegou aqui");
+        //define que o arquivo não existe para fazer as verificações
         arquivoExiste = false;
 
+        //define o último slot selecionado para acessar as informações dele
         PlayerPrefs.SetInt("ultimoSlotSelecionado", slotSelecionado);
 
-        //vari�vel para formatar em binario
+        //variável para desformatar
         BinaryFormatter formatoBinario = new BinaryFormatter();
 
-        //local onde ser� salvo
+        //local padrão onde foi salvo
         string localSave = Application.persistentDataPath;
 
         FileStream arquivo;
         
-        //verifica se o arquivo existe para abri-lo
+        //verifica se o arquivo existe para abrí-lo
         if(File.Exists(localSave + "/EtecParanormal" + slotSelecionado + ".save"))
         {
-
+            //abre o arquivo no local especificado, descriptografa ele e o fecha
             arquivo = File.Open(localSave + $"/EtecParanormal{slotSelecionado}.save", FileMode.Open);
-
             SaveJogo CarregarJogo = (SaveJogo)formatoBinario.Deserialize(arquivo);
-
             arquivo.Close();
 
+            //define que o arquivo existe e carrega as informações do save
             arquivoExiste = true;
-
             return CarregarJogo;
-
         }
 
         return null;
-
     }
 
     public void CarregarJogo(int slot)
     {
-
+        //define o valor verdadeiro como 1 e salva
         PlayerPrefs.SetInt("valorVerdadeiro", 1);
         PlayerPrefs.Save();
 
+        //define o carregar com o carregar do save passando o slot que foi selecionado
         SaveJogo carregar = Carregar(slot);
 
+        //carrega os saves do jogo passando o arquivo onde foi salvado as informações
         CarregarPlayerPrefs(carregar);
 
+        //verifica se o arquivo existe
         if (arquivoExiste)
         {
-
-            Debug.Log(PlayerPrefs.GetString("cenaSalva"));
+            //define a última cena que foi salva e carrega ela
             string cena = PlayerPrefs.GetString("cenaSalva");
             SceneManager.LoadScene(cena);
-
         }
         else
         {
@@ -164,170 +156,133 @@ public class ControleDeSalvamento : MonoBehaviour
 
     public void CarregarComecoJogo(int slot)
     {
+        //carrega no começo do jogo as informações da sala e do jogador
         SaveJogo carregar = Carregar(slot);
-
         CarregarPlayerPrefs(carregar);
     }
 
     private void SalvarPlayerPrefs(SaveJogo salvar)
     {
-
+        //chama todas as funções do jogador de salvar
         atributosJogador = GameObject.FindWithTag("Player");
-        Debug.Log(atributosJogador);
         atributosJogador.GetComponent<SistemaArma>().objTiro.GetComponent<DanoDaBolinha>().SalvarDano();
         atributosJogador.GetComponent<VidaJogador>().SalvarVida();
         atributosJogador.GetComponent<BarraDeXP>().SalvarXP();
 
-        Debug.Log("PlayerPrefs salvos");
-
+        //verifica se há chave, se houver salva o novo valor em todas
         if (PlayerPrefs.HasKey("personagemSelecionado"))
         {
             salvar.PersonagemSelecionado = PlayerPrefs.GetInt("personagemSelecionado");
-            Debug.Log($"personagem selecionado: {salvar.PersonagemSelecionado}");
         }
 
         if (PlayerPrefs.HasKey("cenaSalva"))
         {
-
-            Debug.Log(PlayerPrefs.GetString("cenaSalva"));
-
             salvar.UltimaCenaSalva = PlayerPrefs.GetString("cenaSalva");
-            Debug.Log($"cena salva: {salvar.UltimaCenaSalva}");
         }
         else
         {
+            //se não houver fases salvas, define como fase 1 a cena
             PlayerPrefs.SetString("cenaSalva", "Fase1");
             salvar.UltimaCenaSalva = PlayerPrefs.GetString("cenaSalva");
-            Debug.Log($"cena salva: {salvar.UltimaCenaSalva}");
         }
 
         if (PlayerPrefs.HasKey("vidaAtual"))
         {
             salvar.VidaAtual = PlayerPrefs.GetFloat("vidaAtual");
-            Debug.Log($"vida atual: {salvar.VidaAtual}");
         }
 
         if (PlayerPrefs.HasKey("vidaMaxima"))
         {
             salvar.VidaMaxima = PlayerPrefs.GetFloat("vidaMaxima");
-            Debug.Log($"vida maxima: { salvar.VidaMaxima}");
         }
 
         if (PlayerPrefs.HasKey("menorDano"))
         {
             salvar.DanoMenor = PlayerPrefs.GetFloat("menorDano");
-            Debug.Log($"menor dano: {salvar.DanoMenor}");
         }
 
         if (PlayerPrefs.HasKey("maiorDano"))
         {
             salvar.DanoMaior = PlayerPrefs.GetFloat("maiorDano");
-            Debug.Log($"maior dano: {salvar.DanoMaior}");
         }
 
         if (PlayerPrefs.HasKey("expNivelAtual"))
         {
-
             salvar.ExpNivelAtual = PlayerPrefs.GetFloat("expNivelAtual");
-            Debug.Log($"exp atual do nivel: {salvar.ExpNivelAtual}");
-
         }
 
         if (PlayerPrefs.HasKey("expAtual"))
         {
-
             salvar.ExpAtual = PlayerPrefs.GetFloat("expAtual");
-            Debug.Log($"exp atual: {salvar.ExpAtual}");
-
         }
 
         if (PlayerPrefs.HasKey("nivelAtual"))
         {
-
             salvar.NivelAtual = PlayerPrefs.GetFloat("nivelAtual");
-            Debug.Log($"nivel atual: {salvar.NivelAtual}");
-
         }
-
     }
 
     public void CarregarPlayerPrefs(SaveJogo carregar)
     {
-        Debug.Log("PlayerPrefs carregados");
-
+        //verifica se o carregar passado não é nulo e instancia todos os valores para as variáveis da nuvem
         if (carregar != null)
         {
-
             PlayerPrefs.SetFloat("menorDano", carregar.DanoMenor);
-            Debug.Log($"menor dano: {PlayerPrefs.GetInt("menorDano")}");
 
             PlayerPrefs.SetFloat("maiorDano", carregar.DanoMaior);
-            Debug.Log($"maior dano: {PlayerPrefs.GetInt("maiorDano")}");
 
             PlayerPrefs.SetFloat("vidaAtual", carregar.VidaAtual);
-            Debug.Log($"vida atual: {PlayerPrefs.GetInt("vidaAtual")}");
  
             PlayerPrefs.SetFloat("vidaMaxima", carregar.VidaMaxima);
-            Debug.Log($"vida maxima: {PlayerPrefs.GetInt("vidaMaxima")}");
 
             PlayerPrefs.SetString("cenaSalva", carregar.UltimaCenaSalva);
-            Debug.Log($"cena: {PlayerPrefs.GetInt("cenaSalva")}");
 
             PlayerPrefs.SetInt("personagemSelecionado", carregar.PersonagemSelecionado);
-            Debug.Log($"personagem: {PlayerPrefs.GetInt("personagemSelecionado")}");
 
             PlayerPrefs.SetFloat("nivelAtual", carregar.NivelAtual);
-            Debug.Log($"nivel atual: {PlayerPrefs.GetFloat("nivelAtual")}");
 
             PlayerPrefs.SetFloat("expAtual", carregar.ExpAtual);
-            Debug.Log($"exp atual: {PlayerPrefs.GetFloat("expAtual")}");
 
             PlayerPrefs.SetFloat("expNivelAtual", carregar.ExpNivelAtual);
-            Debug.Log($"exp do nivel atual: {PlayerPrefs.GetFloat("expNivelAtual")}");
 
             PlayerPrefs.Save();
         }
-
     }
 
     public void ConfirmaSave()
     {
+        //define as variáveis iniciais de save e do formato do arquivo
         SaveJogo salvar = new SaveJogo();
         BinaryFormatter formatoBinario = new BinaryFormatter();
 
+        //usa o caminho do arquivo e o abre
         using (FileStream arquivo = File.Open(caminhoArquivo, FileMode.Open))
         {
-
+            //salva os atributos do jogador e criptografa eles
             SalvarPlayerPrefs(salvar);
-
             formatoBinario.Serialize(arquivo, salvar);
-
         }
 
+        //verifica se a tela de confirmação não é nula, e se for e estiver ativa, desativa ela
         if(telaDeConfirmacaoSave != null)
         {
-
             telaDeConfirmacaoSave.SetActive(false);
-
         }
 
+        //verifica se o botão iniciar não é nulo para ativar ele e atualiza o texto do slot do save
         if(botaoIniciar != null)
-        {
-            
+        {   
             botaoIniciar.interactable = true;
             FindObjectOfType<ControleSlotsSave>().MostrarTextoSave();
 
             if(slot1 != null)
             {
-
                 EventSystem.current.SetSelectedGameObject(slot1);
-            
             }
-
         }
-
     }
 
+    //caso não confirme o save, apenas desativa a tela de confirmação e volta pro slot 1
     public void NaoConfirmaSave()
     {
         telaDeConfirmacaoSave.SetActive(false);

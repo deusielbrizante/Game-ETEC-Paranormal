@@ -4,20 +4,20 @@ using UnityEngine;
 public class DanoAliens : MonoBehaviour
 {
 
-    //vari·veis para configurar o ataque
+    //variÔøΩveis para configurar o ataque
     [SerializeField] private float velocidadeDeAtaque;
     [SerializeField] private int menorDano;
     [SerializeField] private int maiorDano;
     private float danoDeAtaque;
 
-    //objeto dos inimigos
+    //objetos dos inimigos
     [SerializeField] private GameObject AlienAzul;
     [SerializeField] private GameObject AlienVermelho;
 
     //objeto do texto de dano exibido
     [SerializeField] private GameObject textoDano;
 
-    //convers„o de int para string para mostrar o dano causado
+    //convers√£o de int para string para mostrar o dano causado
     private string danoCausado;
 
     //tempo para poder atacar
@@ -25,104 +25,87 @@ public class DanoAliens : MonoBehaviour
 
     private void Awake()
     {
-
+        //define o estado do gelo e do jogo como falso
         GeloAtivo.Ativo = false;
         FogoAtivo.Ativo = false;
-
     }
 
     private void OnTriggerStay2D(Collider2D outro)
     {
-
-        //verifica se È o jogador
+        //verifica se √© o jogador
         if (outro.gameObject.tag == "Player")
         {
-
+            //define o objeto de √°udio do jogador
             var somDanoJogador = outro.gameObject.GetComponent<AudioSource>();
 
             //verifica se o inimigo pode atacar
             if (velocidadeDeAtaque <= podeAtacar)
             {
-
-                //verifica qual inimigo est· atacando
+                //verifica qual inimigo est√° atacando
                 if (gameObject == AlienAzul)
                 {
-
                     //muda a cor do dano para azul
                     textoDano.GetComponent<TextoDano>().TextoDeDano.color = Color.blue;
 
-                    //faz receber o dano e inicia a verificaÁ„o para ver se j· est· com gelo
+                    //faz receber o dano e inicia a verifica√ß√£o para ver se j√° est√° com gelo
                     Dano(outro);
                     somDanoJogador.Play();
 
-                    //retorna a cor do texto para vermelho para n„o dar conflito
+                    //retorna a cor do texto para vermelho para n√£o dar conflito
                     textoDano.GetComponent<TextoDano>().TextoDeDano.color = Color.red;
 
-                    //se n„o estiver ativo o gelo, ele ativo e inicia a corrotina das alteraÁıes
+                    //se n√£o estiver ativo o gelo, ele ativo e inicia a corrotina das altera√ß√µes
                     if (GeloAtivo.Ativo == false)
                     {
-
+                        //define o geloAtivo como verdadeiro
                         outro.gameObject.GetComponent<EfeitosDanoPersonagem>().geloAtivo = true;
                         GeloAtivo.Ativo = true;
-
                     }
-
                 }
                 else if (gameObject == AlienVermelho)
                 {
-
                     //muda a cor do dano para vermelho
                     textoDano.GetComponent<TextoDano>().TextoDeDano.color = Color.red;
 
-                    //faz receber o dano e faz a animaÁ„o de tomar dano
+                    //faz receber o dano e faz a anima√ß√£o de tomar dano
                     Dano(outro);
                     somDanoJogador.Play();
                     outro.gameObject.GetComponent<EfeitosDanoPersonagem>().danoAtivo = true;
 
-                    //verifica se j· est· queimando
+                    //verifica se n√£o est√° queimando
                     if (FogoAtivo.Ativo == false)
                     {
-
-                        //avisa que j· est· queimando e ativa o dano
+                        //avisa que j√° est√° queimando e ativa o dano
                         FogoAtivo.Ativo = true;
                         outro.gameObject.GetComponent<EfeitosDanoPersonagem>().fogoAtivo = true;
-
                     }
-
                 }
                 else
                 {
-
                     //muda a cor do dano para vermelho
                     textoDano.GetComponent<TextoDano>().TextoDeDano.color = Color.red;
 
-                    //faz receber o dano e faz a animaÁ„o de tomar dano
+                    //faz receber o dano e faz a anima√ß√£o de tomar dano
                     Dano(outro);
                     somDanoJogador.Play();
                     outro.gameObject.GetComponent<EfeitosDanoPersonagem>().danoAtivo = true;
-
                 }
-
             }
             else
             {
-
                 //adiciona o tempo para poder atacar
                 podeAtacar += Time.deltaTime;
-
             }
-
         }
         else
         {
             return;
         }
-
     }
 
     private void Dano(Collider2D jogador)
     {
-        //coloca um n˙mero aleatÛrio para o dano
+        //coloca um n√∫mero aleat√≥rio para o dano
         danoDeAtaque = Random.Range(menorDano, maiorDano);
 
         //diminui a vida do jogador
