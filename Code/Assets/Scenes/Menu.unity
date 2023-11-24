@@ -1901,7 +1901,7 @@ MonoBehaviour:
   menuInicial: {fileID: 1903187403}
   menuOpcoes: {fileID: 840785498}
   menuPersonagens: {fileID: 1545826323}
-  telaTutorialPC: {fileID: 1216552069}
+  telaTutorialPC: {fileID: 1477615808}
   telaTutorialControle: {fileID: 1122668225}
   iniciar: {fileID: 1713576135}
   som: {fileID: 414636291}
@@ -2062,24 +2062,20 @@ MonoBehaviour:
     m_ActionName: Jogador/AbrirBauPorta[/Keyboard/f,/DualSenseGamepadHID/buttonNorth]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 5fbc8601-794d-4561-ae00-0603df18d371
-    m_ActionName: Jogador/Pause[/DualSenseGamepadHID/start,/Keyboard/escape]
+    m_ActionId: 39f7003c-a759-4c83-84ac-90a0abc74728
+    m_ActionName: Jogador/Voltar[/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 207319066}
-        m_TargetAssemblyTypeName: MenuTroca, Assembly-CSharp
-        m_MethodName: Voltar
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f12517e1-ee2f-4d90-b494-ecc931b492e5
-    m_ActionName: Jogador/Voltar[/DualSenseGamepadHID/buttonEast]
+      m_Calls: []
+    m_ActionId: 3621b611-aa29-4aa8-b491-8dc36563e3dc
+    m_ActionName: Jogador/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1ecc6dd2-5ccc-419b-b0e7-d4b68521a8fe
+    m_ActionName: UI/Voltar[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7610db40-6126-4300-a518-191f225f1bb7
+    m_ActionName: UI/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Jogador
