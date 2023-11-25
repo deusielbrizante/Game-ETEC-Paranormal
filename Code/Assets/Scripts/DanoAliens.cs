@@ -4,7 +4,7 @@ using UnityEngine;
 public class DanoAliens : MonoBehaviour
 {
 
-    //vari�veis para configurar o ataque
+    //variáveis para configurar o ataque
     [SerializeField] private float velocidadeDeAtaque;
     [SerializeField] private int menorDano;
     [SerializeField] private int maiorDano;

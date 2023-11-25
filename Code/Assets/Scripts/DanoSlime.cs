@@ -25,7 +25,7 @@ public class DanoSlime : MonoBehaviour
 
     private void Awake()
     {
-
+        //define o estado como falso do gelo e do fogo
         GeloAtivo.Ativo = false;
         FogoAtivo.Ativo = false;
 
